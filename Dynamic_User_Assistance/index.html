@@ -12,10 +12,25 @@
        $(function () {
   $('[data-toggle="tooltip"]').tooltip();
   $('#defaultPop').tooltip('show') ;
+  $('.toast').toast({autohide:true,delay:1000,animation:true});
+  
 })
 $(function () {
-  $('[data-toggle="popover"]').popover();
-  $('#test1').popover('show') .off('click');
+  
+ 
+ 
+	
+$('#dcc1').popover({placement:"top",html: true, 
+	sanitize: false});
+	
+	//$('#dcc1').popover('show');
+	
+	//$('#dcc').popover({placement:"top",html: true, 
+	//content: function () {
+   //     var content = $(this).attr("data-popover-content");
+   //     return $(content).find(".popover-body").clone();
+   // }});
+
 })
 
 
@@ -25,57 +40,136 @@ $(function () {
     <body ng-app='dynamicUserAssist' ng-controller="ctrl" style="padding: 10%">
          <span content-assist ></span>
          
-                <input id="inx110" type="text" value="your input here"/>
-         </div>
-         
-         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    
-                    <!-- <div class="modal-content"> -->
-                    <!-- <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-            </button>
-            </div> -->
-                <div class="modal-body">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/WhbYBb0huMs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div> -->
-            <!-- </div> -->
-            </div>
-            </div>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            <input id="input1" type="text" value="your input here"/>
+            
+            <button id="launchButtton" type="button" class="btn btn-primary">
                     Launch static backdrop modal
-                  </button>
+            </button>
                   
-                  <!-- Modal -->
-                  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                                <iframe width="100%" src="https://www.youtube.com/embed/WhbYBb0huMs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button  id='input2' class="btn btn-primary" type="button">Button</button>
+						
+			<!-- toast -->			
+			<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+              <div class="toast" style="position: absolute; top: 0; right: 0;">
+                 <div class="toast-header">
+                   <strong class="mr-auto">Success</strong>
+                   <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+                 <div class="toast-body">
+                  Data saved successfully.
+                </div>
+              </div>
+            </div>
+			<!-- toast -->	
+			
+			<!--Dynamic Content Controller -->
+			<!-- <div style="position: absolute; bottom: 0; right: 0;">			
+			   <button id="dcc" type="button" class="btn btn-secondary"  data-toggle="popover" data-placement="top"  data-html='true' data-popover-content="#yourContentHere">
+                 Dynamic Content Controller
+               </button>
+			</div>
 
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Understood</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <span id='test1' class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
-                        <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
-                      </span>
+						   
+			<div id="yourContentHere" style="display:none;">
+                <div class="popover-body">
+      
+                   <form>
+                                   <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-4 col-form-label">Content Id</label>
+                                    <div class="col-sm-8	">
+                                    <input type="text" readonly class="form-control-plaintext" name="contentId" id="contentId"  value="">
+                                    </div>
+                                    </div> 
+									
+									<div class="form-group">
+                                    <label for="exampleFormControlSelect1">Content Type</label>
+                                     <select class="form-control" id="contentType">
+                                       <option>Text</option>
+									   <option>Video</option>
+									   <option>Doc</option>
+                                     </select>
+									</div>
+									
+									<div class="form-group">
+                                   <label for="exampleFormControlTextarea1">Content</label>
+                                   <textarea class="form-control" id="contentVal" rows="3" value=""></textarea>
+                                  </div>
+								  
+								  <button id="formSubmit" type="button" class="btn btn-primary" onclick="myFunction()">Submit</button>
+                    </form>
+                </div>
+            </div> -->
+			
+			 <div style="position: absolute; bottom: 0; right: 0;">			
+			   <button id="dcc1" type="button" class="btn btn-secondary"  data-toggle="popover" data-placement="top"  data-html='true' data-content="
+			      <form>
+                                   <div class='form-group row'>
+                                    <label for='staticEmail' class='col-sm-4 col-form-label'>Content Id</label>
+                                    <div class='col-sm-8'>
+                                    <input type='text' readonly class='form-control-plaintext' name='contentId' id='contentId'  value=''>
+                                    </div>
+                                    </div> 
+									
+									<div class='form-group'>
+                                    <label for='exampleFormControlSelect1'>Content Type</label>
+                                     <select class='form-control' id='contentType'>
+                                       <option>Text</option>
+									   <option>Video</option>
+									   <option>Doc</option>
+                                     </select>
+									</div>
+									
+									<div class='form-group'>
+                                   <label for='exampleFormControlTextarea1'>Content</label>
+                                   <textarea class='form-control' id='contentVal' rows='3'></textarea>
+                                  </div>
+								  
+								  <button id='formSubmit' type='button' value='' class='btn btn-primary' onclick='myFunction()'>Submit</button>
+                    </form>
+			   ">
+                 Dynamic Content Controller
+               </button>
+			</div>
+			
+			<!--Dynamic Content Controller -->
+						
     </body>   
+	<script>
+	
+	 var elements =document.body.querySelectorAll('button[type="button"],input[type="text"],input[type="button"], input[type="checkbox"]');
+     var contentsData = [];
+	 var selectedId = '';
+     for(var i = 0 ;i < elements.length; ++i){
+	   var elemId = elements[i].id;
+       if(elements[i].id &&  elemId!="contentId" && elemId!="dcc" && elemId!="formSubmit"){
+	     console.log(elements[i].id);
+		 $(elements[i]).on('click', function(e){
+		    //$('#staticBackdrop').modal('show');
+			//selectedId = this.id;
+			$("#contentId").val( this.id );
+		 });
+       }
+    }
+	
+	//$("#formSubmit").on('click',function(e){
+	function myFunction(e){
+	  // e.preventDefault();
+	   var contentData = $("#contentVal").val();
+	    var contentId = $("#contentId").val();
+	   if(contentData && contentId){
+	     contentsData.push({
+	      "elementId":$("#contentId").val(),
+		  "type":$("#contentType").val(),
+		  "content":$("#contentVal").val()
+	     });
+		$('#dcc1').popover('hide');
+		 $('.toast').toast('show');
+	   }
+
+	   console.log(contentsData);
+	};
+   
+	</script>
 </html>
