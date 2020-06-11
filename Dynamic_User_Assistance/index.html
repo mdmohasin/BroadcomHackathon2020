@@ -97,7 +97,7 @@ $('#dcc1').popover({placement:"top",html: true,
                                    <textarea class="form-control" id="contentVal" rows="3" value=""></textarea>
                                   </div>
 								  
-								  <button id="formSubmit" type="button" class="btn btn-primary" onclick="myFunction()">Submit</button>
+								  <button id="formSubmit" type="button" class="btn btn-primary" onclick="contentDataController()">Submit</button>
                     </form>
                 </div>
             </div> -->
@@ -126,7 +126,7 @@ $('#dcc1').popover({placement:"top",html: true,
                                    <textarea class='form-control' id='contentVal' rows='3'></textarea>
                                   </div>
 								  
-								  <button id='formSubmit' type='button' value='' class='btn btn-primary' onclick='myFunction()'>Submit</button>
+								  <button id='formSubmit' type='button' value='' class='btn btn-primary' onclick='contentDataController()'>Submit</button>
                     </form>
 			   ">
                  Dynamic Content Controller
@@ -154,7 +154,7 @@ $('#dcc1').popover({placement:"top",html: true,
     }
 	
 	//$("#formSubmit").on('click',function(e){
-	function myFunction(e){
+	function contentDataController(e){
 	  // e.preventDefault();
 	   var contentData = $("#contentVal").val();
 	    var contentId = $("#contentId").val();
